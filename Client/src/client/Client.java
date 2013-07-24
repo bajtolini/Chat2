@@ -17,7 +17,6 @@ public class Client implements Runnable {
     private ClientThread clientThread = null;
     private String nick;
     private String message = "empty";
-    private boolean begging = true;
     private boolean finish = false;
 
     public Client(int serverPort) {
@@ -37,11 +36,8 @@ public class Client implements Runnable {
     @Override
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        if (begging) {
-            System.out.println("Please write your name/nick");
-            nick = scanner.nextLine();
-            begging = false;
-        }
+        System.out.println("Please write your name/nick");
+        nick = scanner.nextLine();
         while ((thread != null) && (finish == false)) {
             try {
                 if (!message.contains(".bye")) {
@@ -101,7 +97,7 @@ public class Client implements Runnable {
 
     public static void main(String args[]) {
         if (args.length != 1) {
-            System.err.println("Usage: java ChatClient host port");
+            System.err.println("Usage: wrong port, type once more");
         } else {
             Client client = new Client(Integer.parseInt(args[0]));
         }

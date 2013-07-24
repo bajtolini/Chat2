@@ -12,7 +12,7 @@ public class ServerThread extends Thread {
     private boolean stop;
     private Server server = null;
     private Socket socket = null;
-    private int ID = -1;
+    private int ID = 1666;
     private DataInputStream streamIn = null;
     private DataOutputStream streamOut = null;
 

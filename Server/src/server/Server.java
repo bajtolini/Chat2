@@ -14,11 +14,9 @@ public class Server implements Runnable {
 
     public Server(int port) {
         try {
-            //mozna pisac
-            //do poprawy:nalezy 2 razy nacisnac enter aby client zostal rozlaczony?!
             InetAddress adress = InetAddress.getLocalHost();
             System.out.println("Binding to port " + port + ", please wait  ...");
-            server = new ServerSocket(port, 20, adress);
+            server = new ServerSocket(port, 50, adress);
             System.out.println("Server started: " + server);
             start();
         } catch (IOException ioe) {
@@ -111,7 +109,7 @@ public class Server implements Runnable {
 
     public static void main(String args[]) {
         if (args.length != 1) {
-            System.err.println("Usage: java ChatServer port");
+            System.err.println("Usage: wrong port, type once more");
         } else {
             Server server = new Server(Integer.parseInt(args[0]));
         }
